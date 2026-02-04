@@ -1,5 +1,5 @@
 {
-  "name": "windows",
+  "name": "windows 7",
   "service": "windows",
   "forwardPorts": [8006],
   "dockerComposeFile": "compose.yml"
