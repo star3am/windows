@@ -1,6 +1,39 @@
 {
-  "name": "windows",
-  "service": "windows",
-  "forwardPorts": [8006],
-  "dockerComposeFile": "compose.yml"
+  "name": "Windows via dockur",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "enableNonRootDocker": "true",
+      "moby": "true"
+    }
+  },
+
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb",
+    "storage": "32gb"
+  },
+
+  "forwardPorts": [8006, 3389],
+  
+  "portsAttributes": {
+    "8006": {
+      "label": "Windows Desktop (noVNC)",
+      "onAutoForward": "notify"
+    },
+    "3389": {
+      "label": "Windows RDP",
+      "onAutoForward": "notify"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": []
+    }
+  },
+
+  "postCreateCommand": "echo 'Docker-in-Docker enabled. Ready to run dockur/windows.'"
 }
