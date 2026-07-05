@@ -1,6 +1,12 @@
 {
-  "name": "windows",
-  "service": "windows",
-  "forwardPorts": [8006],
-  "dockerComposeFile": "compose.yml"
+  "name": "Windows via dockur",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb",
+    "storage": "32gb"
+  }
 }
